@@ -23,7 +23,7 @@ public void insertAsLast(int k)
 public boolean deleteLast()
 public boolean insertAt(int data, int pos)
 public boolean deleteAt(int pos)
-public boolean deleteAllData(int k)
+public boolean deleteAll(int k)
 /* */
 
 
