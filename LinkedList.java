@@ -15,16 +15,16 @@ public class LinkedList {
 		
 		private int data;
 		private Node next;
-    }
+    	}
     
 	private Node head;
 	
 	/* --------------------------------- */
 	//create an empty list
-    public LinkedList() {
+    	public LinkedList() {
 		
 		head = null;
-    }
+   	}
     
     //create a list with a node
     public LinkedList(int k) {
