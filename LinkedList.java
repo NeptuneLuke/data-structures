@@ -25,21 +25,21 @@ public class LinkedList {
 		
 		head = null;
    	}
-    
-    //create a list with a node
-    public LinkedList(int k) {
+	
+	//create a list with a node
+	public LinkedList(int k) {
 		
 		head = new Node();
 		head.data = k;
 		head.next = null;
-    }
+    	}
     
 	//destroy the list
-    public void destroy(){
+    	public void destroy(){
 		
 		head = null;
-    }
-    /* --------------------------------- */
+    	}
+   	/* --------------------------------- */
 	
 	
 	
@@ -51,14 +51,14 @@ public class LinkedList {
 			return true;
 		else
 			return false;
-    }
+    	}
 	
 	//return true if the element is in the list
 	public boolean exist(int k) {
 	
 		if(head == null)
-    		return false;
-    	else {
+    			return false;
+    		else {
     		
 			Node app = head;
 			boolean found = false;
@@ -72,12 +72,12 @@ public class LinkedList {
 			}
 			
 			return found;
-    	}
+    		}
 		
-    }
+    	}
 	
 	//extract the first node containing k
-    public Node extractFirstNode(int k) {
+    	public Node extractFirstNode(int k) {
     	
 		if (head == null || !this.exist(k)) {
 			return null;
@@ -97,17 +97,17 @@ public class LinkedList {
 			return app;
 		}
 		
-    }
+    	}
     
 	//extract the last node containing k
-    public Node extractLastNode(int k) {
+    	public Node extractLastNode(int k) {
     	
 		this.reverse();
 		Node extract = this.extractFirstNode(k);
 		this.reverse();
 		return extract;
     	
-    }
+    	}
 	
 	//return number of nodes with value k
 	public int countValues(int k) {
@@ -130,7 +130,7 @@ public class LinkedList {
 			return count;
 		}
 		
-    }
+    	}
 	
 	//extract all nodes containing k
 	public LinkedList extractAll(int k) {
@@ -150,7 +150,7 @@ public class LinkedList {
 				app = app.next;
 			}
 			
-	    	return temp;
+	    		return temp;
 		}
 		
 	}
@@ -160,13 +160,13 @@ public class LinkedList {
 	
 	/* --------------------------------- */
 	//add a node to the head of the list
-    public void insertAsFirst(int k) {
+    	public void insertAsFirst(int k) {
 		
 		Node n = new Node();
 		n.data = k;
 		n.next = head;
 		head = n;
-    }
+    	}
 	
 	//delete the first node (move the head to the right)
 	public boolean deleteFirst() {
@@ -178,7 +178,7 @@ public class LinkedList {
 			return true;
 		}
 		
-    }
+    	}
 	
 	//insert node at the end of the list
 	public void insertAsLast(int k) {
@@ -225,35 +225,35 @@ public class LinkedList {
 	
 	//insert the data at the given position, so the index of the previous node 
 	//in that position become pos+1
-    public boolean insertAt(int data, int pos) {
+    	public boolean insertAt(int data, int pos) {
       
-    	if(head == null || pos <= 0 || pos > this.size())
-    		return false;
-    	else {
+    		if(head == null || pos <= 0 || pos > this.size())
+    			return false;
+    		else {
     		
-    		if(pos == 1) {
+    			if(pos == 1) {
 				this.insertAsFirst(data);
-        	}
+        		}
 			else {
 				
 				Node node = new Node();
-            	node.data = data;
-            	node.next = head;
-            	Node app = head;
-            	int index = 1;
+            			node.data = data;
+            			node.next = head;
+            			Node app = head;
+            			int index = 1;
             	
-            	while(index < pos-1) {
-            	    app = app.next;
-            	    index++;
-            	}
-            	node.next = app.next;
-            	app.next = node;
+				while(index < pos-1) {
+				    app = app.next;
+				    index++;
+				}
+				node.next = app.next;
+				app.next = node;
 			}
 			
 			return true;
-    	}
+    		}
     	
-    }
+    	}
 	
 	//delete the node at position pos
 	public boolean deleteAt(int pos) {
@@ -263,29 +263,29 @@ public class LinkedList {
 		else {
 			
 			if(pos == 1) {
-	    		head = head.next;
-	    	}
-	    	else {
+	    			head = head.next;
+	    		}
+	    		else {
 	    		
-	    		Node app = head;
-	    		Node prev = head;
-	    		int index = 1;
-	    		
-		    	while(index < pos) {
-		    		prev = app;
-		    		app = app.next;
-		    		index++;
-		    	}
-		    	prev.next = app.next;
-	    	}
+				Node app = head;
+				Node prev = head;
+				int index = 1;
+
+				while(index < pos) {
+					prev = app;
+					app = app.next;
+					index++;
+				}
+				prev.next = app.next;
+	    		}
 			
 			return true;
 		}
 		
-    }
+    	}
 	
 	//delete all the nodes containing the value k
-    public boolean deleteAllData(int k) {
+    	public boolean deleteAllData(int k) {
 
 		if(head == null || !this.exist(k))
 			return false;
@@ -320,129 +320,129 @@ public class LinkedList {
     		return null;
     	else
     		return head;
-    }
+    	}
     
 	//return the first data of the list
-    public int getFirstData() {
+    	public int getFirstData() {
 		
-    	Node app = getFirstNode();
-    	if(app == null) {
-    		System.out.println("Impossible to return the first data");
-    		return -1;
-    	}
-    	else
-    		return app.data;
+		Node app = getFirstNode();
+		if(app == null) {
+			System.out.println("Impossible to return the first data");
+			return -1;
+		}
+		else
+    			return app.data;
     	
-    }
+    	}
 	
 	//return the last node of the list
 	public Node getLastNode() {
 		
-    	if(head == null)
-    		return null;
-    	else {
+		if(head == null)
+			return null;
+		else {
     	
-    		this.reverse();
-    		Node lastNode = this.getFirstNode();
-    		this.reverse();
+			this.reverse();
+			Node lastNode = this.getFirstNode();
+			this.reverse();
 			
-    		return lastNode;
-    	}
+    			return lastNode;
+    		}
 		
-    }
+    	}
     
 	//return the last data of the list
-    public int getLastData() {
+   	public int getLastData() {
 		
-    	Node app = getLastNode();
-    	if(app == null) {
+		Node app = getLastNode();
+		if(app == null) {
 			System.out.println("Impossible to return the last data");
 			return -1;
 		}
-    	else
-    		return app.data;
-    }
+    		else
+    			return app.data;
+    	}
 	
 	//return the node at the given position pos
 	public Node getNodeAt(int pos) {
 
-    	if(head == null || pos <= 0 || pos > this.size())
-    		return null;
-    	else {
+		if(head == null || pos <= 0 || pos > this.size())
+			return null;
+		else {
 			
-    		if(pos == 1)
-    			return this.getFirstNode();
+    			if(pos == 1)
+    				return this.getFirstNode();
 			else {
 				
 				Node app = head;
-		    	int index = 1;
+		    		int index = 1;
 		    	
 				while(index < pos) {
 		    		app = app.next;
 		    		index++;
-		    	}
+		    		}
 				
-		    	return app;
+		    		return app;
 			}
-    	}
+    		}
 		
-    }
+    	}
     
 	//return the data at the given position pos
-    public int getDataAt(int pos) {
+    	public int getDataAt(int pos) {
 
-    	Node app = getNodeAt(pos);
-    	if(app == null) {
+		Node app = getNodeAt(pos);
+		if(app == null) {
 			System.out.println("Impossible to return the data at the specified position");
 			return -1;
 		}
-    	else
-    		return app.data;
-    }
+    		else
+    			return app.data;
+    	}
 	
 	//set the data of the first node of the list to newData
 	public boolean setFirstData(int newData) {
     	
-    	if(head == null)
-    		return false;
-    	else {
-    		head.data = newData;
-    		return true;
-    	}
+		if(head == null)
+			return false;
+		else {
+			head.data = newData;
+			return true;
+		}
     	
-    }
+    	}
 	
 	//set the data of the last node of the list to newData
 	public boolean setLastData(int newData) {
     	
-    	if(head == null)
-    		return false;
-    	else {
-    		
-    		this.getLastNode().data = newData;
-    		
-    		return true;
-    	}
+		if(head == null)
+			return false;
+		else {
+
+			this.getLastNode().data = newData;
+
+			return true;
+		}
 		
-    }
+    	}
 	
 	//set the data of the node at given position to newData
 	public boolean setDataAt(int newData, int pos){
 
-    	if(head == null || pos > this.size() || pos < 0) {
-    		return false;
-    	}
-    	else {
-			
-    		this.getNodeAt(pos).data = newData;
-			
-    		return true;
-    	}
+		if(head == null || pos > this.size() || pos < 0) {
+			return false;
+		}
+		else {
+
+			this.getNodeAt(pos).data = newData;
+
+			return true;
+		}
 		
-    }
+    	}
 	
 	//swap the node at given positions
-    public void swap(int pos1, int pos2) {
+    	public void swap(int pos1, int pos2) {
     	
     	if(head != null && (pos1 <= this.size() && pos1 > 0 && pos2 <= this.size() && pos2 > 0)) {
     		
@@ -473,30 +473,30 @@ public class LinkedList {
     			 Node tmp = app1.next;
     			 app1.next = app2.next;
     			 app2.next = tmp;
+    			}
     		}
+    	
     	}
-    	
-    }
 	
-    //swap the given nodes
-    public void swap(Node first, Node second) {
-    	
-    	if(head != null && first != null && second != null)
-    		swap(this.indexOf(first),this.indexOf(second));
-    	
-    }
+	//swap the given nodes
+	public void swap(Node first, Node second) {
+
+		if(head != null && first != null && second != null)
+			swap(this.indexOf(first),this.indexOf(second));
+
+	}
     
 	//return the index of the given node
 	public int indexOf(Node node) {
     	
-    	if(head == null || node == null) {
+    		if(head == null || node == null) {
 			System.out.println("Impossible to return the index of the specified node");
 			return -1;
 		}
-    	else {
+		else {
     		
-    		Node app = head;
-    		int index = 1;
+			Node app = head;
+			int index = 1;
     		
 			while(index < this.size()) {
     			
@@ -505,92 +505,92 @@ public class LinkedList {
     				
     			app = app.next;
     			index++;
-    		}
+    			}
 			
-    		return index;
-    	}
+    			return index;
+    		}
     	
-    }
+    	}
 	
 	//return the previous node of the given node
 	public Node previous(Node node) {
     	
-    	if(head == null || node == null || node.equals(head))
-    		return null;
-    	else {
+		if(head == null || node == null || node.equals(head))
+			return null;
+		else {
     		
-    		Node app = head;
+    			Node app = head;
     		
-    		while(!node.equals(app.next))
-        		app = app.next;
+    			while(!node.equals(app.next))
+        			app = app.next;
     	
-    		return app;
-    	}
+    			return app;
+    		}
 		
-    }
+    	}
     
 	//return the previous node of the node at given position
-    public Node previous(int pos) {
+    	public Node previous(int pos) {
     	
-    	Node app = previous(this.getNodeAt(pos));
-        if(app == null)
-        	return null;
-        else
-        	return app;
-    }
+		Node app = previous(this.getNodeAt(pos));
+		if(app == null)
+			return null;
+        	else
+        		return app;
+    	}
 	
 	//return the successor node of the given node
 	public Node successor(Node node) {
     	
-    	if(head == null || node == null || node.next == null)
-    		return null;
-    	else
-    		return node.next;
+		if(head == null || node == null || node.next == null)
+			return null;
+		else
+			return node.next;
 		
-    }
+    	}
     
 	//return the successor node of the node at given position
-    public Node successor(int pos) {
-    	
-    	if(head == null)
-    		return null;
-    	else
-    		return this.getNodeAt(pos).next;
-    }
+    	public Node successor(int pos) {
+		
+		if(head == null)
+			return null;
+		else
+			return this.getNodeAt(pos).next;
+	}
 	
 	//replace the node at the given position with the node newNode
 	public boolean replaceNodeAt(Node newNode, int pos) {
     	
-    	if(head == null || newNode == null || pos <= 0 || pos > this.size())
-    		return false;
-    	else {
-    		
-    		Node temp = new Node();
-    		temp.data = newNode.data;
-    		
-			if(pos == 1) {    		
-        		
-    			temp.next = head.next;
-        		head = temp;
-        	}
+    		if(head == null || newNode == null || pos <= 0 || pos > this.size())
+    			return false;
     		else {
+    		
+			Node temp = new Node();
+			temp.data = newNode.data;
+    		
+				if(pos == 1) {    		
+
+				temp.next = head.next;
+				head = temp;
+        		}
+    			else {
     			
 				Node app = head;
-    			int index = 1;
+    				int index = 1;
     			
-    			while(index < pos-1) {
-    				app = app.next;
-    	    		index++;
-    	    	}
+    				while(index < pos-1) {
+    					app = app.next;
+    	    			index++;
+    	    		}
     			
-    			temp.next = app.next.next;
-    			app.next = temp;
-    		}
+				temp.next = app.next.next;
+				app.next = temp;
+    			}
 			
 			return true;
-    	}
+    		}
 		
-    }
+    	}
 	
 	//replace the given node with the node newNode
 	public boolean replaceNodeAt(Node newNode, Node node) {
@@ -608,64 +608,63 @@ public class LinkedList {
 	//duplicates the list, if the list is modified by the instance (this)
 	//also the list which invoke the method is modified
 	//because they share the same head
-    public LinkedList duplicate() {
+    	public LinkedList duplicate() {
     	
-    	return this;
-    }
+    		return this;
+    	}
 	
 	//copy all the nodes of the instance list into new nodes of a new list
-    public LinkedList copy() {
+    	public LinkedList copy() {
 		
-    	if(head == null)
-    		return null;
-    	else {
+    		if(head == null)
+    			return null;
+    		else {
     		
-    		LinkedList copyList = new LinkedList();
-    		copyList.head = copy(head);
-    		return copyList;
-    	}
+			LinkedList copyList = new LinkedList();
+			copyList.head = copy(head);
+			return copyList;
+    		}
 		
 	}
      
-    private Node copy(Node app) {
+    	private Node copy(Node app) {
 		
-    	Node n = new Node();
-    	n.data = app.data;
+		Node n = new Node();
+		n.data = app.data;
     	
 		if(app.next != null)
-    		n.next = copy(app.next);
+    			n.next = copy(app.next);
 		
-    	return n;
-    }
+    		return n;
+    	}
 	
 	//concatenate this+theList
 	public LinkedList concatenate(LinkedList secondList) {
 		
-    	if(head == null || secondList == null)
-    		return null;
-    	else {
-    		
-    		LinkedList copy1 = this.copy();
-    		LinkedList copy2 = secondList.copy();
-    		
-    		if (copy2.head == null) 
-    			return copy1;
-    		
-    		else if (copy1.head == null) 
-    			return copy2;
-    		
-    		else {
-    			
+		if(head == null || secondList == null)
+			return null;
+		else {
+
+			LinkedList copy1 = this.copy();
+			LinkedList copy2 = secondList.copy();
+
+			if (copy2.head == null) 
+				return copy1;
+
+			else if (copy1.head == null) 
+				return copy2;
+
+			else {
 				Node app = copy1.head;
-				
+
 				while(app.next != null) 
 					app = app.next;
-				
+
 				app.next = copy2.head;
-				
+
 				return copy1;
 			}
-    	}
+    		}
 		
 	}
 	
@@ -735,137 +734,137 @@ public class LinkedList {
 		
 		app.next = null; 				//the given list is fully reversed
 		return rev;
-    }
+    	}
 	
 	//cut the list from fromNode (included) to the end of the list
 	public void cutEnd(Node fromNode) {
     	
-    	if(head != null &&  fromNode != null)
-    		cutEnd(this.indexOf(fromNode));
+    		if(head != null &&  fromNode != null)
+    			cutEnd(this.indexOf(fromNode));
 		
-    }
+    	}
 	
 	//cut the list from pos(included) to the end of the list
-    public void cutEnd(int pos) {
+    	public void cutEnd(int pos) {
     	  	
-    	if(head != null) {
-    		if(pos > 0 && pos <= this.size()) {
+    		if(head != null) {
+    			if(pos > 0 && pos <= this.size()) {
     			
-    			int index = pos;
+    				int index = pos;
     			
-            	while(index <= this.size()) {
-            		deleteAt(index);
-            		//index doesn't incremate because deleteAt does all the job
-            		//till the end of the list
-            	}
+            			while(index <= this.size()) {
+            				deleteAt(index);
+					//index doesn't incremate because deleteAt does all the job
+					//till the end of the list
+            			}
+    			}
     		}
-    	}
 		
-    }
+    	}
 	
 	//cut the list from fromPos(included) to toPos(excluded)
 	public void cutFromTo(int fromPos, int toPos) {
     	
-    	if(head != null && fromPos != toPos) {
+    		if(head != null && fromPos != toPos) {
     		
-    		if(toPos == this.size()+1)
-    			cutEnd(fromPos);
+    			if(toPos == this.size()+1)
+    				cutEnd(fromPos);
     		
-    		else if(fromPos+1 == toPos)
-    			deleteAt(fromPos);
+    			else if(fromPos+1 == toPos)
+    				deleteAt(fromPos);
     			
-    		else if(fromPos > 0 && fromPos <= this.size() && toPos <= this.size()) {
+    			else if(fromPos > 0 && fromPos <= this.size() && toPos <= this.size()) {
     			
-    			int index = fromPos;
-            	
-    			while(index < toPos) {
-            		deleteAt(index);
-            		//index doesn't incremate because deleteAt does all the job
-            		//till the end of the list
-            		toPos--;
-            	}
+				int index = fromPos;
+
+				while(index < toPos) {
+				deleteAt(index);
+				//index doesn't incremate because deleteAt does all the job
+				//till the end of the list
+				toPos--;
+            			}
+    			}
     		}
-    	}
 		
-    }
-    
-    //cut the list from fromNode(included) to toNode(excluded)
-    public void cutFromTo(Node fromNode, Node toNode) {
-    	
-    	if(head != null && fromNode != null && toNode != null)
-    		cutFromTo(this.indexOf(fromNode),this.indexOf(toNode));
-    	
-    }
-	
-    //cut the edges of the list, deleting the first and the last node
-    public void cutEdges() {
-    	
-    	if(head != null) {
-    		this.deleteFirst();
-        	this.deleteLast();
     	}
+    
+	//cut the list from fromNode(included) to toNode(excluded)
+	public void cutFromTo(Node fromNode, Node toNode) {
+
+		if(head != null && fromNode != null && toNode != null)
+			cutFromTo(this.indexOf(fromNode),this.indexOf(toNode));
+
+	}
+	
+    	//cut the edges of the list, deleting the first and the last node
+    	public void cutEdges() {
     	
-    }
+    		if(head != null) {
+    			this.deleteFirst();
+        		this.deleteLast();
+    		}
+    	
+    	}
     
 	//return a inner list from fromPos(included) to toPos(excluded)
-    public LinkedList subList(int fromPos, int toPos) {
+    	public LinkedList subList(int fromPos, int toPos) {
     	
-    	if(head == null || fromPos > this.size() || fromPos < 0 || toPos > this.size()+1 || fromPos == toPos)
-    		return null;
-    	else {
+    		if(head == null || fromPos > this.size() || fromPos < 0 || toPos > this.size()+1 || fromPos == toPos)
+    			return null;
+    		else {
     		
-    		LinkedList sub = new LinkedList();
+    			LinkedList sub = new LinkedList();
     		
-    		if(fromPos == toPos)
-    			sub.insertAsFirst(this.getNodeAt(fromPos).data);
+    			if(fromPos == toPos)
+    				sub.insertAsFirst(this.getNodeAt(fromPos).data);
     		
-    		else{
+    			else{
     			
-    			Node app = new Node();	
+    				Node app = new Node();	
     			
-    			while(fromPos < toPos) {
+    				while(fromPos < toPos) {
     	        		
-    				app.data = this.getDataAt(fromPos);
+    					app.data = this.getDataAt(fromPos);
     	        			
-    	        	if(sub.head == null)
-    	        		sub.insertAsFirst(app.data);
-    	        	else
-    	        		sub.insertAsLast(app.data);
+    	        		if(sub.head == null)
+    	        			sub.insertAsFirst(app.data);
+    	        		else
+    	        			sub.insertAsLast(app.data);
     	        			
-    	        	fromPos++;
-    			}			
+    	        		fromPos++;
+    				}			
+    			}
+    		
+    			return sub;
     		}
-    		
-    		return sub;
+    	
     	}
-    	
-    }
     
-  //return a inner list from fromPos(included) to toPos(excluded)
-    public LinkedList subList(Node fromNode, Node toNode) {
+  	//return a inner list from fromPos(included) to toPos(excluded)
+   	 public LinkedList subList(Node fromNode, Node toNode) {
     	
-    	if(head != null && fromNode != null && toNode != null)
-    		return subList(this.indexOf(fromNode),this.indexOf(toNode));
-    	else
-    		return null;
-    }
-    
-    //return a list which is the merge of two lists (concat + order)
-    public LinkedList merge(LinkedList secondList) {
-    	
-    	if(head == null || secondList == null)
-    		return null;
-    	else {
-    		
-    		//don't make a copy of the lists because it already does 
-    		//the method concatenate (both for this and secondList)
-    		LinkedList mergeList = this.concatenate(secondList);
-    		mergeList.orderData();
-    		
-    		return mergeList;
+    		if(head != null && fromNode != null && toNode != null)
+    			return subList(this.indexOf(fromNode),this.indexOf(toNode));
+    		else
+    			return null;
     	}
+    
+   	 //return a list which is the merge of two lists (concat + order)
+    	public LinkedList merge(LinkedList secondList) {
     	
-    }
+    		if(head == null || secondList == null)
+    			return null;
+    		else {
+    		
+    			//don't make a copy of the lists because it already does 
+    			//the method concatenate (both for this and secondList)
+    			LinkedList mergeList = this.concatenate(secondList);
+    			mergeList.orderData();
+    		
+    			return mergeList;
+    		}
+    	
+	}
 	/* --------------------------------- */
 	
 	
@@ -875,23 +874,23 @@ public class LinkedList {
 	public int size() {
 		
 		return size(head);
-    }
+    	}
 
-    private int size(Node app) {
+    	private int size(Node app) {
 		
 		if(app == null)
 			return 0;
 		else
 			return 1 + size(app.next);
-    }
+    	}
 	
 	//print the list(displaying data)
 	public void print() {
 
-    	if(head == null)
-    		System.out.println("The list is empty");
-    	else {
-    		System.out.println("Data in the list: ");
+    		if(head == null)
+    			System.out.println("The list is empty");
+    		else {
+    			System.out.println("Data in the list: ");
 			
 			Node app = head;
 			
@@ -906,13 +905,13 @@ public class LinkedList {
 			}
 		}
 		
-    }
+    	}
 	
 	//print the list(displaying references of the nodes)
 	public void printReference() {
 		
-    	if(head == null)
-    		System.out.println("The list is empty");
+    		if(head == null)
+    			System.out.println("The list is empty");
 		else {
 			System.out.println("Reference in the list: ");
 			
@@ -933,7 +932,7 @@ public class LinkedList {
 			}
 		}
 		
-    }
+    	}
 	
 	//print the list in reverse order(displaying data)
 	public void printReverse() {
@@ -972,74 +971,74 @@ public class LinkedList {
 	//multiply all the data of the nodes of the list by k
 	public void multiplyBy(int k) {
 		
-    	if(head != null) {
+    		if(head != null) {
 			
-    		Node app = head;
-        	while(app != null) {
-        		app.data *= k;
-        		app = app.next;
-        	}
-    	}
+    			Node app = head;
+        		while(app != null) {
+        			app.data *= k;
+        			app = app.next;
+        		}
+    		}
 		
-    }
+	}
 	
 	//divide all the data of the nodes of the list by k
 	public void divideBy(int k) {
     	
-    	if(head != null) {
-			
-	    	Node app = head;
-	    	while(app != null) {
-	    		app.data /= k;
-	    		app = app.next;
-	    	}
-    	}
+		if(head != null) {
+
+			Node app = head;
+			while(app != null) {
+				app.data /= k;
+				app = app.next;
+			}
+		}
 		
-    }
+	}
 	
 	//sum all the data of the nodes of the list by k
 	public void sumBy(int k) {
 		
-    	if(head != null) {
-			
-	    	Node app = head;
-	    	while(app != null) {
-	    		app.data += k;
-	    		app = app.next;
-	    	}
-    	}
+		if(head != null) {
+
+			Node app = head;
+			while(app != null) {
+				app.data += k;
+				app = app.next;
+			}
+		}
 		
-    }
+	}
     
 	//subtract all the data of the nodes of the list by k
-    public void subtractBy(int k) {
+    	public void subtractBy(int k) {
 		
-    	if(head != null) {
-			
-	    	Node app = head;
-	    	while(app != null) {
-	    		app.data -= k;
-	    		app = app.next;
-	    	}
-    	}
+		if(head != null) {
+
+			Node app = head;
+			while(app != null) {
+				app.data -= k;
+				app = app.next;
+			}
+		}
 		
-    }
+	}
 	
 	//return the minimum value of the list
 	public int minData() {
     	
-    	if(head == null) {
-			System.out.println("Impossible to return the minimum value of the list");
-			return -1;
+		if(head == null) {
+				System.out.println("Impossible to return the minimum value of the list");
+				return -1;
+			}
+		else {
+
+			LinkedList cp1 = this.copy();
+			cp1.orderData();
+			return cp1.getFirstData();
 		}
-    	else {
-    		
-        	LinkedList cp1 = this.copy();
-        	cp1.orderData();
-        	return cp1.getFirstData();
-    	}
 		
-    }
+	}
 	
 	//return the minimum node of the list
 	public Node minNode() {
@@ -1048,39 +1047,39 @@ public class LinkedList {
 			System.out.println("Impossible to return the minimum node of the list");
 			return null;
 		}
-	    else {
+	    	else {
 	    	
-	        Node app = head;
-	        Node min = head;
-	        
-	        while(app != null) {
+			Node app = head;
+			Node min = head;
+			
+			while(app != null) {
 	        		
 				if(min.data > app.data)
-	        		min = app;
+	        			min = app;
 					
-	        	app = app.next;
-	        }
+	        		app = app.next;
+	        	}
 				
-	        return min;
-	    }
+	        	return min;
+	    	}
 			
 	}
 	
 	//return the maximum value of the list
 	public int maxData() {
     	
-    	if(head == null) {
+    		if(head == null) {
 			System.out.println("Impossible to return the maximum value of the list");
 			return -1;
 		}
-    	else {
+    		else {
 			
-    		LinkedList cp1 = this.copy();
-        	cp1.orderData();
-        	return cp1.getLastData();
-    	}
+			LinkedList cp1 = this.copy();
+			cp1.orderData();
+			return cp1.getLastData();
+    		}
 		
-    }
+    	}
 	
 	//return the maximum node of the list
 	public Node maxNode() {
@@ -1108,56 +1107,56 @@ public class LinkedList {
 	}
 	
 	//return a list with all the common elements (picked one time) from l1 and l2
-    public LinkedList intersection(LinkedList secondList) {
+    	public LinkedList intersection(LinkedList secondList) {
     	
-    	if(head == null || secondList == null)
-    		return null;
-    	else {
+		if(head == null || secondList == null)
+			return null;
+		else {
     		
-    		LinkedList thirdList = new LinkedList();
+    			LinkedList thirdList = new LinkedList();
     		
-    		if(this.size() <= secondList.size()) {
+    			if(this.size() <= secondList.size()) {
     		
-    			Node app = head;
+    				Node app = head;
     			
-    			while(app != null) {
+    				while(app != null) {
     				
-    				if(secondList.exist(app.data) && !thirdList.exist(app.data))
-    					thirdList.insertAsFirst(app.data);
+    					if(secondList.exist(app.data) && !thirdList.exist(app.data))
+    						thirdList.insertAsFirst(app.data);
     				
-    				app = app.next;
+    					app = app.next;
+    				}
+    			
     			}
-    			
-    		}
-    		else {
+    			else {
         		
-    			Node app = secondList.head;
+    				Node app = secondList.head;
     			
-    			while(app != null) {
+    				while(app != null) {
     				
-    				if(this.exist(app.data) && !thirdList.exist(app.data))
-    					thirdList.insertAsFirst(app.data);
+    					if(this.exist(app.data) && !thirdList.exist(app.data))
+    						thirdList.insertAsFirst(app.data);
     				
-    				app = app.next;
+    					app = app.next;
+    				}
     			}
-    		}
 			
-    		return thirdList;
-    	}
+    			return thirdList;
+    		}
 		
-    }
+    	}
 	
 	//return a list with all the elements (picked one time) existing in l1 and l2
-    public LinkedList union(LinkedList secondList) {
+    	public LinkedList union(LinkedList secondList) {
     	
-    	if(head == null || secondList == null)
-    		return null;
-    	else {
+		if(head == null || secondList == null)
+			return null;
+    		else {
     		
-    		LinkedList thirdList = new LinkedList();
-    		Node firstNode = head;
+    			LinkedList thirdList = new LinkedList();
+    			Node firstNode = head;
 			
-    		while(firstNode != null) {
+    			while(firstNode != null) {
 				
 				if(!thirdList.exist(firstNode.data))
 					thirdList.insertAsFirst(firstNode.data);
@@ -1176,9 +1175,9 @@ public class LinkedList {
 			}
 			
     		return thirdList;
-    	}
+    		}
 		
-    }
+	}
 	/* --------------------------------- */
 	
     
