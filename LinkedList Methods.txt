@@ -82,7 +82,7 @@ public void subtractBy(int k)
 public int minData()
 public Node minNode()
 public int maxData()
-public Node minNode()
+public Node maxNode()
 public LinkedList intersection(LinkedList secondList)
 public LinkedList union(LinkedList secondList)
 /* */
