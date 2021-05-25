@@ -731,25 +731,19 @@ public class LinkedList {
 	//reverse the list
 	public void reverse() {
 		
-		//there is more than one element
-		if (head != null && head.next != null)
-			head = reverse(head);
-		
+		if(head != null){
+			Node prev = null;
+			Node current = head;
+			Node next = null;
+			while (current != null) {
+				next = current.next;
+				current.next = prev;
+				prev = current;
+				current = next;
+            		}
+            		head = prev;
+        	}
 	}
-	
-	private Node reverse(Node app) {
-		
-		//there is one element
-		if (app.next == null) 
-			return app;
-		
-		
-		Node rev = reverse(app.next);   //recursively reverse the list starting from the successor of app
-		app.next.next = app;			//now the successor of app points to app
-		
-		app.next = null; 				//the given list is fully reversed
-		return rev;
-    }
 	
 	//cut the list from fromNode (included) to the end of the list
 	public void cutEnd(Node fromNode) {
