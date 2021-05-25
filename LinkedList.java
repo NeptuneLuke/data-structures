@@ -299,7 +299,7 @@ public class LinkedList {
     }
 	
 	//delete all the nodes containing the value k
-    public boolean deleteAllData(int k) {
+    public boolean deleteAll(int k) {
 
 		if(head == null || !this.exist(k))
 			return false;
