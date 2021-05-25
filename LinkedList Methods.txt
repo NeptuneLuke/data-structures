@@ -4,6 +4,7 @@ public LinkedList(int k)
 public void destroy()
 /* */
 
+
 /* */
 public boolean listEmpty()
 public int size()
@@ -55,7 +56,7 @@ public LinkedList concatenate(LinkedList secondList)
 public void orderNodes()
 public void orderData()
 public void reverse()
-public void cutEnd(Node fromNode
+public void cutEnd(Node fromNode)
 public void cutEnd(int pos)
 public void cutFromTo(int fromPos, int toPos)
 public void cutFromTo(Node fromNode, Node toNode)
