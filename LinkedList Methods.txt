@@ -1,7 +1,18 @@
 /* */
 public LinkedList()
 public LinkedList(int k)
-public void destroy()
+public void destroy() 
+/* */
+
+
+/* */
+public void insertAsFirst(int k)
+public boolean deleteFirst()
+public void insertAsLast(int k)
+public boolean deleteLast()
+public boolean insertAt(int data, int pos)
+public boolean deleteAt(int pos)
+public boolean deleteAllData(int k)
 /* */
 
 
@@ -13,17 +24,6 @@ public Node extractFirstNode(int k)
 public Node extractLastNode(int k)
 public LinkedList extractAll(int k)
 public int countValues(int k)
-/* */
-
-
-/* */
-public void insertAsFirst(int k)
-public boolean deleteFirst()
-public void insertAsLast(int k)
-public boolean deleteLast()
-public boolean insertAt(int data, int pos)
-public boolean deleteAt(int pos)
-public boolean deleteAll(int k)
 /* */
 
 
@@ -68,14 +68,6 @@ public LinkedList merge(LinkedList secondList)
 
 
 /* */
-public void print()
-public void printReference()
-public void printReverse()
-public void printReverseReference()
-/* */
-
-
-/* */
 public void multiplyBy(int k)
 public void divideBy(int k)
 public void sumBy(int k)
@@ -86,4 +78,12 @@ public int maxData()
 public Node maxNode()
 public LinkedList intersection(LinkedList secondList)
 public LinkedList union(LinkedList secondList)
+/* */
+
+
+/* */
+public void print()
+public void printReference()
+public void printReverse()
+public void printReverseReference()
 /* */
