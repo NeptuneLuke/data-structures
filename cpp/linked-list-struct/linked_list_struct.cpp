@@ -430,7 +430,7 @@ int size (Node* head) {
     return currentPos;
 }
 
-int count_value(Node* head,int value) {
+int count_value(Node* head,int data) {
 
     if(is_empty(head)) {
         return 0;
@@ -440,7 +440,7 @@ int count_value(Node* head,int value) {
     int count_value = 0;
     while(temp != nullptr) {
         
-        if(temp->data == value) {
+        if(temp->data == data) {
             ++count_value;
         }
         
@@ -535,6 +535,22 @@ Node* get_node_pos(Node* head, int pos) {
             return temp->next;  // the node at the right pos is temp->next
         }   
     }    
+
+    return nullptr;
+}
+
+Node* get_node_value(Node* head, int data) {
+
+    if(head != nullptr && exist(head,data)) {
+
+        Node* temp = head;
+        while(temp != nullptr && temp->data != data) {
+
+            temp = temp->next;
+        }
+
+        return temp;
+    }
 
     return nullptr;
 }
@@ -640,23 +656,50 @@ Node* concat_self_list(Node* head) {
 Node* concat_list(Node* head1, Node* head2) {
 
     if(head1 == nullptr) {
-        return head2;
+        
+        Node* newList = nullptr;
+        Node* temp = head2;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
     
     if(head2 == nullptr) {
-        return head1;
+        
+        Node* newList = nullptr;
+        Node* temp = head1;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
 
     // this avoid getting in an infinite loop if we are concatenating the same list
     if(head1 != head2 || !equal(head1,head2)) {
         
-        Node* tail = head1;
-        while(tail->next != nullptr) {
-            tail = tail->next;
+        Node* newList = nullptr;
+        Node* tail1 = head1;
+        while(tail1->next != nullptr) {
+            
+            add_last(newList,tail1->data);
+            tail1 = tail1->next;
         }
-        tail->next = head2;
 
-        return head1;
+        Node* tail2 = head2;
+        while(tail2->next != nullptr) {
+            
+            add_last(newList,tail2->data);
+            tail2 = tail2->next;
+        }
+
+        return newList;
     }
     
     return nullptr;
@@ -665,15 +708,44 @@ Node* concat_list(Node* head1, Node* head2) {
 Node* merge_list(Node* head1, Node* head2) {
 
     if(head1 == head2 || equal(head1,head2)) {
-        return head1;
+        
+        // because just returning head1 will grant at the newList the access at the same list as head1
+        // basically just having two pointers to the same list
+        Node* newList = nullptr;
+        Node* temp = head1;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
 
     if(head1 == nullptr) {
-        return head2;
+
+        Node* newList = nullptr;
+        Node* temp = head2;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
 
     if(head2 == nullptr) {
-        return head1;
+        
+        Node* newList = nullptr;
+        Node* temp = head1;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
 
     Node* temp1 = head1;
@@ -704,7 +776,16 @@ Node* merge_list(Node* head1, Node* head2) {
 Node* intersect_list(Node* head1, Node* head2) {
 
     if(head1 == head2 || equal(head1,head2)) {
-        return head1;
+        
+        Node* newList = nullptr;
+        Node* temp = head1;
+        while(temp != nullptr) {
+
+            add_last(newList,temp->data);
+            temp = temp->next;
+        }
+
+        return newList;
     }
 
     if(head1 == nullptr || head2 == nullptr) {
