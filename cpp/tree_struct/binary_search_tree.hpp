@@ -34,5 +34,7 @@ Node* search(Node* root, int data);         // returns the node with the value d
 bool exist(Node* root, int data);           // true if a node with value data exist, false otherwise
 bool is_empty(Node* root);                  // true if the tree is null (so the size = 0), false otherwise
 bool equal(Node* root1, Node* root2);       // true if root1 is equal to root2(contains the same nodes in the same order), false otherwise
+bool is_bst(Node* root);                    // true if root is a BST, false otherwise
+bool bst_checker(Node* root, int min, int max);     // the actual algorithm to check if the tree is BST or not
 
 #endif

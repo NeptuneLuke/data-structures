@@ -352,8 +352,11 @@ bool exist(Node* root, int data) {
     else if(data < root->data) {
         return exist(root->left,data);
     }
-    else {
+    else if(data > root->data){
         return exist(root->right,data);
+    }
+    else {  // if data != root->data (because in this BST all the nodes have unique values)
+        return false;
     }
 }
 
@@ -391,4 +394,23 @@ bool equal(Node* root1, Node* root2) {
         return equal(root1->left,root2->left) && equal(root1->right,root2->right);
     }
 
+}
+
+bool bst_checker(Node* root, int min, int max) {
+
+    if(root == nullptr) {
+        return true;
+    }
+
+    if(root->data < min || root->data > max) {
+        return false;
+    }
+
+    return bst_checker(root->left, min, root->data - 1) &&
+    bst_checker(root->right, root->data + 1, max);
+}
+
+bool is_bst(Node* root) {
+
+    return bst_checker(root, INT_MIN, INT_MAX);
 }
