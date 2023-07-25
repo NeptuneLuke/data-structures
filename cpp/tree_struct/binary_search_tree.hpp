@@ -1,7 +1,8 @@
 #ifndef binary_search_tree
 #define binary_search_tree
 
-// implementation of a binary search tree
+// This implementation of a binary search tree
+// can not have duplicate nodes
 struct Node {
 
     int data;

@@ -5,10 +5,6 @@
 
 void insert(Node* &root, int data) {
 
-    // this implementation of a BST tree can not have duplicate nodes
-    if(exist(root,data))
-        return;
-
     if(root == nullptr) {
         
         root = new Node();
@@ -27,11 +23,11 @@ void insert(Node* &root, int data) {
     }
 }
 
-// should be used carefully because does not check if the 
+// Should be used carefully because does not check if the 
 // tree is still a BST
 void update(Node* &root, int data, int newData) {
 
-    if(root != nullptr && exist(root,data)) {
+    if(root != nullptr) {
 
         if(root->data == data) {
             root->data = newData;
@@ -110,7 +106,7 @@ void delete_tree(Node* &root) {
 
 Node* delete_node(Node *root, int data) {
     
-    if(root == nullptr || !exist(root,data)) {
+    if(root == nullptr) {
         return nullptr;
     }
     else if(data < root->data) {
@@ -120,24 +116,24 @@ Node* delete_node(Node *root, int data) {
         root->right = delete_node(root->right,data);
     }
     else {
-        // case 1 - no child
+        // case 1: no child
         if(root->left == nullptr && root->right == nullptr) {
             delete root;
             root = nullptr;
         }
-        // case 2 - one child
+        // case 2: one child left
         else if(root->left == nullptr) {
             Node *temp = root;
             root = root->right;
             delete temp;
         }
-        // case 2 - one child
+        // case 2: one child right
         else if(root->right == nullptr) {
             Node *temp = root;
             root = root->left;
             delete temp;
         }
-        // case 3 - 2 children
+        // case 3: 2 children
         else {
             
             Node *temp = max_node(root->right);
@@ -153,13 +149,15 @@ void print_in_order(Node* root) {
 
     if(root != nullptr) {
         
-        if(root->left != nullptr)
+        if(root->left != nullptr) {
             print_in_order(root->left);
-        
+        }
+
         std::cout << root->data << " ";
         
-        if(root->right != nullptr)
+        if(root->right != nullptr) {
             print_in_order(root->right);
+        }
     }
     else {
         std::cout << "The BST is empty!";
@@ -172,11 +170,13 @@ void print_pre_order(Node* root) {
         
         std::cout << root->data << " ";
         
-        if(root->left != nullptr)
+        if(root->left != nullptr) {
             print_in_order(root->left);
+        }
         
-        if(root->right != nullptr)
+        if(root->right != nullptr) {
             print_in_order(root->right);
+        }
     }
     else {
         std::cout << "The BST is empty!";
@@ -187,12 +187,14 @@ void print_post_order(Node* root) {
 
     if(root != nullptr) {
         
-        if(root->left != nullptr)
+        if(root->left != nullptr) {
             print_in_order(root->left);
-        
-        if(root->right != nullptr)
+        }
+
+        if(root->right != nullptr) {
             print_in_order(root->right);
-        
+        }
+
         std::cout << root->data << " ";
     }
     else {
@@ -222,9 +224,11 @@ void print_bfs(Node* root) {
             if(temp->left != nullptr) {
                 q.push(temp->left);
             }
+            
             if(temp->right != nullptr) {
                 q.push(temp->right);
             }
+
             level--;
         }
         std::cout << "\n";
@@ -280,6 +284,7 @@ int count_left_nodes(Node* root) {
         int count_left = count_left_nodes(root->left);
         int count_right = count_left_nodes(root->right);
         int c = 0;
+        
         if(root->left != nullptr) {
             c = 1;
         }
@@ -297,10 +302,10 @@ int count_right_nodes(Node* root) {
         return 0;
     }
     else {
-
         int count_left = count_right_nodes(root->left);
         int count_right = count_right_nodes(root->right);
         int c = 0;
+        
         if(root->right != nullptr) {
             c = 1;
         }
@@ -314,7 +319,7 @@ int count_right_nodes(Node* root) {
 
 Node* search(Node* root, int data) {
 
-    if(root == nullptr || !exist(root,data)) {
+    if(root == nullptr) {
         return nullptr;
     }
 
