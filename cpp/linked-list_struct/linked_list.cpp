@@ -541,7 +541,7 @@ Node* get_node_pos(Node* head, int pos) {
 
 Node* get_node_value(Node* head, int data) {
 
-    if(head != nullptr && exist(head,data)) {
+    if(head != nullptr) {
 
         Node* temp = head;
         while(temp != nullptr && temp->data != data) {
